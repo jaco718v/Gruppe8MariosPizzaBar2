@@ -31,9 +31,9 @@ public class MenuKort {
             String fillerText = ".";
             System.out.printf("%2s. %s %s %.0f,- \n"
                 ,i+1
-                ,menu.get(i).getName()
-                ,fillerText.repeat(lineLength-menu.get(i).getName().length())
-                ,menu.get(i).getPrice());
+                ,menu.get(i).getNavn()
+                ,fillerText.repeat(lineLength-menu.get(i).getNavn().length())
+                ,menu.get(i).getPris());
         }
     }
 }

@@ -1,20 +1,20 @@
 package com.company;
 
 public class Pizza {
-    private String name;
-    private double price;
+    private String navn;
+    private double pris;
 
     public Pizza(String name, double price) {
-        this.name = name;
-        this.price = price;
+        this.navn = name;
+        this.pris = price;
     }
 
-    public String getName() {
-        return name;
+    public String getNavn() {
+        return navn;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPris() {
+        return pris;
     }
 
 }
