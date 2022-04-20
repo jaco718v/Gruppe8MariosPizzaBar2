@@ -9,7 +9,6 @@ public class Main {
     }
 
     public void run() {
-        new Controller().opretBestilling();
-
+        new MenuKort().printMenu();
     }
 }
