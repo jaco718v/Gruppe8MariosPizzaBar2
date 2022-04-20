@@ -4,11 +4,8 @@ import java.util.ArrayList;
 
 public class MenuKort {
     private ArrayList<Pizza> menu;
-    private ArrayList<Bestilling> bestillingsListe;
-    private int ordrenummer=0;
 
-    public Controller() {
-        bestillingsListe =new ArrayList<>();
+    public MenuKort() {
         menu = new ArrayList<>();
         menu.add(new Pizza("Vesuvio",57));
         menu.add(new Pizza("Amerikaner",53));
@@ -39,5 +36,9 @@ public class MenuKort {
                 ,menu.get(i).getPrice());
         }
 
+    }
+
+    public ArrayList<Pizza> getMenu() {
+        return menu;
     }
 }

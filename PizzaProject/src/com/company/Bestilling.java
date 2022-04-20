@@ -32,4 +32,5 @@ public class Bestilling {
   public ArrayList<Pizza> getPizzaBestilling() {
     return pizzaBestilling;
   }
+
 }
