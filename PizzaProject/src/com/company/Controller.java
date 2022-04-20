@@ -26,15 +26,14 @@ public class Controller {
 
 
     public void printMenu(){
-
-        for (Pizza pizza : menu) {
+        for (int i = 0; i < menu.size(); i++) {
             int lineLength = 40;
             String fillerText = ".";
-            System.out.printf("%s %s %.0f,- \n"
-                ,pizza.getName()
-                ,fillerText.repeat(lineLength-pizza.getName().length())
-                ,pizza.getPrice());
+            System.out.printf("%2s. %s %s %.0f,- \n"
+                ,i+1
+                ,menu.get(i).getName()
+                ,fillerText.repeat(lineLength-menu.get(i).getName().length())
+                ,menu.get(i).getPrice());
         }
-
     }
 }
