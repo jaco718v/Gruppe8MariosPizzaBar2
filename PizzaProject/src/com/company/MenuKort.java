@@ -2,10 +2,10 @@ package com.company;
 
 import java.util.ArrayList;
 
-public class Controller {
+public class MenuKort {
     private ArrayList<Pizza> menu;
 
-    public Controller() {
+    public MenuKort() {
         menu = new ArrayList<>();
         menu.add(new Pizza("Vesuvio",57));
         menu.add(new Pizza("Amerikaner",53));
