@@ -29,23 +29,22 @@ public class OrdreHåndtering {
         System.out.println("Indtast afhentningstid");
         String afhentningstid = sc.nextLine();
         bestillingsListe.add(new Bestilling(ordreNummer,kundeNavn,afhentningstid));
-        String pizzaNavn = null;
-        System.out.println("Indtast pizzaens navn");
-        while(pizzaNavn==(null) ||!pizzaNavn.equalsIgnoreCase("færdig")){
-            pizzaNavn = sc.nextLine();
-            if(!pizzaNavn.equalsIgnoreCase("færdig")){
-                int pizzaAntal = talFinder(pizzaNavn);
+        String pizzaInput = null;
+        System.out.println("Indtast antal og pizzaens navn");
+        while(pizzaInput==(null) ||!pizzaInput.equalsIgnoreCase("færdig")){
+            pizzaInput = sc.nextLine();
+            if(!pizzaInput.equalsIgnoreCase("færdig")){
+                int pizzaAntal = talFinder(pizzaInput);
                 if(pizzaAntal>1){
-                    pizzaNavn=pizzaNavn.substring(2);
+                    pizzaInput=pizzaInput.substring(pizzaInput.charAt(' '));
                 }
-                if(tilføjPizza(menu,pizzaNavn,bestillingsListe.get(bestillingsListe.size()-1))){
-                    System.out.println(pizzaAntal+" "+pizzaNavn+" registreret");
+                if(tilføjPizza(menu,pizzaInput,bestillingsListe.get(bestillingsListe.size()-1))){
+                    System.out.println(pizzaAntal+" "+pizzaInput+" registreret");
                     bestillingsListe.get(bestillingsListe.size()-1).addPizzaAntal(pizzaAntal);
                 }
                 else{
-                    System.out.println(pizzaNavn+" findes ikke i menuen");
+                    System.out.println(pizzaInput+" findes ikke i menuen");
                 }
-
                 System.out.println("Indtast næste ordre eller indtast \"færdig\"");
             }
         }
@@ -63,8 +62,11 @@ public class OrdreHåndtering {
         return false;
     }
 
-    public int talFinder(String pizza){     //Virker kun ved 1-cifret antal
-        if((int)pizza.charAt(0)-(int)'a' < 0){
+    public int talFinder(String pizza){     //Virker kun ved 1 og 2-cifret antal
+        if(!(pizza.charAt(0)==' ')&& (int)pizza.charAt(0)-(int)'a' < 0){
+            if(!(pizza.charAt(1)==' ')&& (int)pizza.charAt(1)-(int)'a' < 0){
+                return (pizza.charAt(1)-'0')*10+pizza.charAt(0)-'0';
+            }
             return pizza.charAt(0)-'0';
         }
         return 1;
