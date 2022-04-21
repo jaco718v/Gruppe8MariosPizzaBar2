@@ -9,6 +9,7 @@ public class Main {
     MenuKort menukort = new MenuKort();
 
     public static void main(String[] args) {
+        //new Kontrol().run(); 
 	      new Main().run();
     }
 
@@ -41,9 +42,9 @@ public class Main {
 
     public String addBestillingPizza(String pizzaName, Bestilling bestilling){
         for(Pizza pizza : menukort.getMenu()){
-            if(pizzaName.equalsIgnoreCase(pizza.getName())){
+            if(pizzaName.equalsIgnoreCase(pizza.getNavn())){
                 bestilling.addPizza(pizza);
-                return pizza.getName()+" registreret til bestilling";
+                return pizza.getNavn()+" registreret til bestilling";
             }
         }
         return "Pizzaen findes ikke i menuen";
@@ -53,7 +54,7 @@ public class Main {
         System.out.println("Bestilling til "+bestilling.getKundeNavn());
         System.out.println("Pizzaer inkluderet i bestilling:");
         for(Pizza pizza : bestilling.getPizzaBestilling()){
-            System.out.println(pizza.getName());
+            System.out.println(pizza.getNavn());
         }
         System.out.println("Afhentes "+bestilling.getAfhentningsTid());
     }
