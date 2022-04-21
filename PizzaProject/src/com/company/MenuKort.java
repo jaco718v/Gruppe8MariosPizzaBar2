@@ -35,5 +35,10 @@ public class MenuKort {
                 ,fillerText.repeat(lineLength-menu.get(i).getNavn().length())
                 ,menu.get(i).getPris());
         }
+
+    }
+
+    public ArrayList<Pizza> getMenu() {
+        return menu;
     }
 }
