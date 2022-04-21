@@ -7,6 +7,7 @@ public class Bestilling {
   private ArrayList<Integer> pizzaAntal = new ArrayList<>();
   private String kundeNavn;
   private String afhentningsTid;
+  MenuKort menukort = new MenuKort();
 
   public Bestilling(String kundeNavn,String afhentningsTid ){
     this.kundeNavn=kundeNavn;
@@ -37,8 +38,8 @@ public class Bestilling {
     System.out.println("Bestilling til "+kundeNavn);
     System.out.println("Pizzaer inkluderet i bestilling:");
     for(int i =0; pizzaBestilling.size()>i;i++){
-      System.out.println(pizzaAntal.get(i)+"\t"+ pizzaBestilling.get(i).getName()
-      +"\t\t"+pizzaBestilling.get(i).getPrice()*pizzaAntal.get(i)+"kr");
+      System.out.println(pizzaAntal.get(i)+"\t"+ pizzaBestilling.get(i).getNavn()
+      +"\t\t"+pizzaBestilling.get(i).getPris()*pizzaAntal.get(i)+"kr");
     }
     System.out.println("Afhentes "+afhentningsTid);
   }
