@@ -9,7 +9,7 @@ public class Main {
     MenuKort menukort = new MenuKort();
 
     public static void main(String[] args) {
-        //new Kontrol().run(); 
+        //new Kontrol().run();
 	      new Main().run();
     }
 
