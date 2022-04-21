@@ -7,15 +7,18 @@ public class OrdreHåndtering {
 
     private ArrayList<Bestilling> bestillingsListe = new ArrayList<>();
     private ArrayList<Bestilling> ekspederetListe = new ArrayList<>();
-    
+    private int ordreNummer=1;
+
     public void visBestillingsListe(){
         for (Bestilling bestilling : bestillingsListe) {
-            System.out.println(bestilling);
+            bestilling.visBestilling();
+            System.out.println("_________________________________");
         }
     }
     public void visEkspederetListe(){
         for (Bestilling bestilling : ekspederetListe) {
-            System.out.println(bestilling);
+            bestilling.visBestilling();
+            System.out.println("_________________________________");
         }
     }
 
@@ -25,7 +28,7 @@ public class OrdreHåndtering {
         String kundeNavn = sc.nextLine();
         System.out.println("Indtast afhentningstid");
         String afhentningstid = sc.nextLine();
-        bestillingsListe.add(new Bestilling(kundeNavn,afhentningstid));
+        bestillingsListe.add(new Bestilling(ordreNummer,kundeNavn,afhentningstid));
         String pizzaNavn = null;
         System.out.println("Indtast pizzaens navn");
         while(pizzaNavn==(null) ||!pizzaNavn.equalsIgnoreCase("færdig")){
@@ -35,7 +38,7 @@ public class OrdreHåndtering {
                 if(pizzaAntal>1){
                     pizzaNavn=pizzaNavn.substring(2);
                 }
-                if(addBestillingPizza(menu,pizzaNavn,bestillingsListe.get(bestillingsListe.size()-1))){
+                if(tilføjPizza(menu,pizzaNavn,bestillingsListe.get(bestillingsListe.size()-1))){
                     System.out.println(pizzaAntal+" "+pizzaNavn+" registreret");
                     bestillingsListe.get(bestillingsListe.size()-1).addPizzaAntal(pizzaAntal);
                 }
@@ -47,9 +50,10 @@ public class OrdreHåndtering {
             }
         }
         System.out.println("Ordre er oprettet");
+        ordreNummer++;
     }
 
-    public boolean addBestillingPizza(MenuKort menu, String pizzaName, Bestilling bestilling){
+    public boolean tilføjPizza(MenuKort menu, String pizzaName, Bestilling bestilling){
         for(Pizza pizza : menu.getMenu()){
             if(pizzaName.equalsIgnoreCase(pizza.getNavn())){
                 bestilling.addPizza(pizza);
@@ -64,5 +68,19 @@ public class OrdreHåndtering {
             return pizza.charAt(0)-'0';
         }
         return 1;
+    }
+
+    public void færdiggørOrdre(int ordrenummer){
+        for (Bestilling bestilling : bestillingsListe){
+            if(ordrenummer==bestilling.getOrdrenummer()){
+                ekspederetListe.add(bestilling);
+                bestillingsListe.remove(bestilling);
+                System.out.println("Bestilling ekspederet");
+            }
+            else{
+                System.out.println("Ordre nummer: "+ordrenummer+" findes ikke.");
+            }
+        }
+
     }
 }

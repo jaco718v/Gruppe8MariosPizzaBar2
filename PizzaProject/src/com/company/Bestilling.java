@@ -7,8 +7,10 @@ public class Bestilling {
   private ArrayList<Integer> pizzaAntal = new ArrayList<>();
   private String kundeNavn;
   private String afhentningsTid;
+  private int ordrenummer;
 
-  public Bestilling(String kundeNavn,String afhentningsTid ){
+  public Bestilling(int ordrenummer, String kundeNavn,String afhentningsTid ){
+    this.ordrenummer=ordrenummer;
     this.kundeNavn=kundeNavn;
     this.afhentningsTid=afhentningsTid;
 }
@@ -29,11 +31,16 @@ public class Bestilling {
     return pizzaBestilling;
   }
 
+  public int getOrdrenummer() {
+    return ordrenummer;
+  }
+
   public void addPizzaAntal(int antal){
     pizzaAntal.add(antal);
   }
 
   public void visBestilling(){
+    System.out.println("Ordrenummer: "+ordrenummer);
     System.out.println("Bestilling til "+kundeNavn);
     System.out.println("Pizzaer inkluderet i bestilling:");
     for(int i =0; pizzaBestilling.size()>i;i++){
