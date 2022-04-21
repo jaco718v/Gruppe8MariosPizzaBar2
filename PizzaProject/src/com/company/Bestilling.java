@@ -7,7 +7,6 @@ public class Bestilling {
   private ArrayList<Integer> pizzaAntal = new ArrayList<>();
   private String kundeNavn;
   private String afhentningsTid;
-  MenuKort menukort = new MenuKort();
 
   public Bestilling(String kundeNavn,String afhentningsTid ){
     this.kundeNavn=kundeNavn;

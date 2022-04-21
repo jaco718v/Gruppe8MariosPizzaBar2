@@ -7,7 +7,6 @@ public class OrdreHåndtering {
 
     private ArrayList<Bestilling> bestillingsListe = new ArrayList<>();
     private ArrayList<Bestilling> ekspederetListe = new ArrayList<>();
-    MenuKort menukort = new MenuKort();
     
     public void visBestillingsListe(){
         for (Bestilling bestilling : bestillingsListe) {
@@ -20,7 +19,7 @@ public class OrdreHåndtering {
         }
     }
 
-    public void opretBestilling(){
+    public void opretBestilling(MenuKort menu){
         Scanner sc = new Scanner(System.in);
         System.out.println("Indtast kundens navn");
         String kundeNavn = sc.nextLine();
@@ -36,7 +35,7 @@ public class OrdreHåndtering {
                 if(pizzaAntal>1){
                     pizzaNavn=pizzaNavn.substring(2);
                 }
-                if(addBestillingPizza(pizzaNavn,bestillingsListe.get(bestillingsListe.size()-1))){
+                if(addBestillingPizza(menu,pizzaNavn,bestillingsListe.get(bestillingsListe.size()-1))){
                     System.out.println(pizzaAntal+" "+pizzaNavn+" registreret");
                     bestillingsListe.get(bestillingsListe.size()-1).addPizzaAntal(pizzaAntal);
                 }
@@ -50,8 +49,8 @@ public class OrdreHåndtering {
         System.out.println("Ordre er oprettet");
     }
 
-    public boolean addBestillingPizza(String pizzaName, Bestilling bestilling){
-        for(Pizza pizza : menukort.getMenu()){
+    public boolean addBestillingPizza(MenuKort menu, String pizzaName, Bestilling bestilling){
+        for(Pizza pizza : menu.getMenu()){
             if(pizzaName.equalsIgnoreCase(pizza.getNavn())){
                 bestilling.addPizza(pizza);
                 return true;
