@@ -45,7 +45,7 @@ public class Bestilling {
     System.out.println("Pizzaer inkluderet i bestilling:");
     for(int i =0; pizzaBestilling.size()>i;i++){
       System.out.println(pizzaAntal.get(i)+"\t"+ pizzaBestilling.get(i).getNavn()
-      +"\t\t"+pizzaBestilling.get(i).getPris()*pizzaAntal.get(i)+"kr");
+      +"\t\t\t\t"+pizzaBestilling.get(i).getPris()*pizzaAntal.get(i)+"kr");
     }
     System.out.println("Afhentes "+afhentningsTid);
   }
