@@ -67,7 +67,7 @@ public class OrdreHåndtering {
     public int talFinder(String pizza){     //Virker kun ved 1 og 2-cifret antal
         if(!(pizza.charAt(0)==' ')&& (int)pizza.charAt(0)-(int)'a' < 0){
             if(!(pizza.charAt(1)==' ')&& (int)pizza.charAt(1)-(int)'a' < 0){
-                return (int)(pizza.charAt(1)-'0')*(int)(10+pizza.charAt(0)-'0');
+                return (pizza.charAt(0)-'0')*(10+pizza.charAt(1)-'0');
             }
             return pizza.charAt(0)-'0';
         }
