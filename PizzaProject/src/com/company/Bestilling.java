@@ -44,8 +44,13 @@ public class Bestilling {
     System.out.println("Bestilling til "+kundeNavn);
     System.out.println("Pizzaer inkluderet i bestilling:");
     for(int i =0; pizzaBestilling.size()>i;i++){
-      System.out.println(pizzaAntal.get(i)+"\t"+ pizzaBestilling.get(i).getNavn()
-      +"\t\t\t\t"+pizzaBestilling.get(i).getPris()*pizzaAntal.get(i)+"kr");
+      int lineLength = 25;
+      String fillerText = " ";
+      System.out.printf("%d \t %s %s %.2fkr\n",
+          pizzaAntal.get(i),
+          pizzaBestilling.get(i).getNavn(),
+          fillerText.repeat(lineLength-pizzaBestilling.get(i).getNavn().length()-Double.toString(pizzaBestilling.get(i).getPris()*pizzaAntal.get(i)).length()),
+          pizzaBestilling.get(i).getPris()*pizzaAntal.get(i));
     }
     System.out.println("Afhentes "+afhentningsTid);
   }

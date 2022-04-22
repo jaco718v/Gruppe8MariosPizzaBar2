@@ -10,17 +10,17 @@ public class OrdreHåndtering {
     private int ordreNummer=1;
 
     public void visBestillingsListe(){
-        System.out.println("_________________________________");
+        System.out.println("______________________________________");
         for (Bestilling bestilling : bestillingsListe) {
             bestilling.visBestilling();
-            System.out.println("_________________________________");
+            System.out.println("______________________________________");
         }
     }
     public void visEkspederetListe(){
-        System.out.println("_________________________________");
+        System.out.println("______________________________________");
         for (Bestilling bestilling : ekspederetListe) {
             bestilling.visBestilling();
-            System.out.println("_________________________________");
+            System.out.println("______________________________________");
         }
     }
 
