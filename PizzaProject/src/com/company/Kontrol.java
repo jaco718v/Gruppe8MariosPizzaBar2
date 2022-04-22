@@ -11,19 +11,7 @@ public class Kontrol {
 
     public void run(){
         while(running) {
-            System.out.println("""
-                ------------------------------------------------------------------
-                1. 'input' - for at lægge en bestilling ind
-                2. 'ekspedere + <ordreNummer>'- for at fjerne en ordre til ekspederet
-                3. 'menu' - for at vise pizza menu'en
-                4. 'stop' - for at stoppe programmet
-                ------------------------------------------------------------------
-                """);
-            System.out.println("nuværrende ordre:");
-            oh.visBestillingsListe();
-
-            System.out.println("ekspederet ordre:");
-            oh.visEkspederetListe();
+            visInformation();
             valg();
         }
     }
@@ -45,6 +33,22 @@ public class Kontrol {
             case "4","stop" -> running = false;
             default -> valg();
         }
+    }
+
+    private void visInformation() {
+        System.out.println("""
+                ------------------------------------------------------------------
+                1. 'input' - for at lægge en bestilling ind
+                2. 'ekspedere + <ordreNummer>'- for at fjerne en ordre til ekspederet
+                3. 'menu' - for at vise pizza menu'en
+                4. 'stop' - for at stoppe programmet
+                ------------------------------------------------------------------
+                """);
+        System.out.println("nuværrende ordre:");
+        oh.visBestillingsListe();
+
+        System.out.println("ekspederet ordre:");
+        oh.visEkspederetListe();
     }
 
 }
