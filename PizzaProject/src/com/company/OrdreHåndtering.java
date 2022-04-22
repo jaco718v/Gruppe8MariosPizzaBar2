@@ -10,12 +10,14 @@ public class OrdreHåndtering {
     private int ordreNummer=1;
 
     public void visBestillingsListe(){
+        System.out.println("_________________________________");
         for (Bestilling bestilling : bestillingsListe) {
             bestilling.visBestilling();
             System.out.println("_________________________________");
         }
     }
     public void visEkspederetListe(){
+        System.out.println("_________________________________");
         for (Bestilling bestilling : ekspederetListe) {
             bestilling.visBestilling();
             System.out.println("_________________________________");
@@ -36,7 +38,7 @@ public class OrdreHåndtering {
             if(!pizzaInput.equalsIgnoreCase("færdig")){
                 int pizzaAntal = talFinder(pizzaInput);
                 if(pizzaAntal>1){
-                    pizzaInput=pizzaInput.substring(pizzaInput.charAt(' '));
+                    pizzaInput=pizzaInput.substring(pizzaInput.indexOf(' ')+1);
                 }
                 if(tilføjPizza(menu,pizzaInput,bestillingsListe.get(bestillingsListe.size()-1))){
                     System.out.println(pizzaAntal+" "+pizzaInput+" registreret");
@@ -65,7 +67,7 @@ public class OrdreHåndtering {
     public int talFinder(String pizza){     //Virker kun ved 1 og 2-cifret antal
         if(!(pizza.charAt(0)==' ')&& (int)pizza.charAt(0)-(int)'a' < 0){
             if(!(pizza.charAt(1)==' ')&& (int)pizza.charAt(1)-(int)'a' < 0){
-                return (pizza.charAt(1)-'0')*10+pizza.charAt(0)-'0';
+                return (int)(pizza.charAt(1)-'0')*(int)(10+pizza.charAt(0)-'0');
             }
             return pizza.charAt(0)-'0';
         }
@@ -73,15 +75,17 @@ public class OrdreHåndtering {
     }
 
     public void færdiggørOrdre(int ordrenummer){
-        for (Bestilling bestilling : bestillingsListe){
-            if(ordrenummer==bestilling.getOrdrenummer()){
-                ekspederetListe.add(bestilling);
-                bestillingsListe.remove(bestilling);
+        boolean ordreFundet=false;
+        for (int i=0; bestillingsListe.size()>i;i++){
+            if(ordrenummer==bestillingsListe.get(i).getOrdrenummer()){
+                ekspederetListe.add(bestillingsListe.get(i));
+                bestillingsListe.remove(bestillingsListe.get(i));
                 System.out.println("Bestilling ekspederet");
+                ordreFundet=true;
             }
-            else{
-                System.out.println("Ordre nummer: "+ordrenummer+" findes ikke.");
-            }
+        }
+        if(!ordreFundet){
+            System.out.println("Ordre nummer: "+ordrenummer+" findes ikke.");
         }
 
     }
