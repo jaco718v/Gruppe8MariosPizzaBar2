@@ -15,29 +15,38 @@ public class Bestilling {
     this.afhentningsTid=afhentningsTid;
 }
 
-  public void addPizza(Pizza pizza){
+  public void lægtilPizza(Pizza pizza){
     pizzaBestilling.add(pizza);
 }
 
-  public String getKundeNavn() {
+  public String skafKundeNavn() {
     return kundeNavn;
   }
 
-  public String getAfhentningsTid() {
+  public String skafAfhentningsTid() {
     return afhentningsTid;
   }
 
-  public ArrayList<Pizza> getPizzaBestilling() {
+  public ArrayList<Pizza> skafPizzaBestilling() {
     return pizzaBestilling;
   }
 
-  public int getOrdrenummer() {
+  public int skafOrdreNummer() {
     return ordrenummer;
   }
 
-  public void addPizzaAntal(int antal){
+  public void lægtilPizzaAntal(int antal){
     pizzaAntal.add(antal);
   }
+
+  public double skafTotal() {
+    double price = 0;
+    for (int i = 0; i < pizzaBestilling.size(); i++) {
+      price += pizzaBestilling.get(i).skafPris() * pizzaAntal.get(i);
+    }
+    return price;
+  }
+
 
   public void visBestilling(){
     System.out.println("Ordrenummer: "+ordrenummer);
@@ -46,12 +55,13 @@ public class Bestilling {
     for(int i =0; pizzaBestilling.size()>i;i++){
       int lineLength = 25;
       String fillerText = " ";
-      System.out.printf("%d \t %s %s %.2fkr\n",
+      System.out.printf("%11s x %2d   %.2fkr \n",
+          pizzaBestilling.get(i).skafNavn(),
           pizzaAntal.get(i),
-          pizzaBestilling.get(i).getNavn(),
-          fillerText.repeat(lineLength-pizzaBestilling.get(i).getNavn().length()-Double.toString(pizzaBestilling.get(i).getPris()*pizzaAntal.get(i)).length()),
-          pizzaBestilling.get(i).getPris()*pizzaAntal.get(i));
+          //fillerText.repeat(lineLength-pizzaBestilling.get(i).getNavn().length()-Double.toString(pizzaBestilling.get(i).getPris()*pizzaAntal.get(i)).length()),
+          pizzaBestilling.get(i).skafPris()*pizzaAntal.get(i));
     }
-    System.out.println("Afhentes "+afhentningsTid);
+      System.out.printf("Total:  %17.2fkr\n", skafTotal());
+      System.out.println("Afhentes "+afhentningsTid);
   }
 }

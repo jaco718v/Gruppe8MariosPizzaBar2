@@ -31,14 +31,14 @@ public class MenuKort {
             String fillerText = ".";
             System.out.printf("%2s. %s %s %.0f,- \n"
                 ,i+1
-                ,menu.get(i).getNavn()
-                ,fillerText.repeat(lineLength-menu.get(i).getNavn().length())
-                ,menu.get(i).getPris());
+                ,menu.get(i).skafNavn()
+                ,fillerText.repeat(lineLength-menu.get(i).skafNavn().length())
+                ,menu.get(i).skafPris());
         }
 
     }
 
-    public ArrayList<Pizza> getMenu() {
+    public ArrayList<Pizza> skafMenu() {
         return menu;
     }
 }

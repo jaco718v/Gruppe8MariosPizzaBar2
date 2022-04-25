@@ -4,20 +4,20 @@ import java.util.Scanner;
 
 public class Kontrol {
 
-    private final Scanner keyboard = new Scanner(System.in);
-    private boolean running = true;
+    private final Scanner tastatur = new Scanner(System.in);
+    private boolean kører = true;
     private final OrdreHåndtering oh = new OrdreHåndtering();
     private final MenuKort mk = new MenuKort();
 
-    public void run(){
-        while(running) {
+    public void kør(){
+        while(kører) {
             visInformation();
             valg();
         }
     }
 
     private void valg(){
-        String[] input = keyboard.nextLine().toLowerCase().split(" ",2);
+        String[] input = tastatur.nextLine().toLowerCase().split(" ",2);
         switch (input[0]) {
             case "1","input" -> oh.opretBestilling(mk);
             case "2","ekspedere" -> {
@@ -29,8 +29,9 @@ public class Kontrol {
                     oh.færdiggørOrdre(Integer.parseInt(input[1]));
                 }
             }
-            case "3","menu" -> mk.printMenu();
-            case "4","stop" -> running = false;
+            case "3","ekspederet" -> visEkspederet();
+            case "4","menu" -> mk.printMenu();
+            case "5","stop" -> kører = false;
             default -> valg();
         }
     }
@@ -40,15 +41,19 @@ public class Kontrol {
                 ------------------------------------------------------------------
                 1. 'input' - for at lægge en bestilling ind
                 2. 'ekspedere + <ordreNummer>'- for at fjerne en ordre til ekspederet
-                3. 'menu' - for at vise pizza menu'en
-                4. 'stop' - for at stoppe programmet
+                3. 'ekspederet' - for vise ekspederet bestillinger
+                4. 'menu' - for at vise pizza menu'en
+                5. 'stop' - for at stoppe programmet
                 ------------------------------------------------------------------
                 """);
-        System.out.println("nuværrende ordre:");
         oh.visBestillingsListe();
+    }
+
+
+    private void visEkspederet() {
 
         System.out.println("ekspederet ordre:");
         oh.visEkspederetListe();
-    }
 
+    }
 }
