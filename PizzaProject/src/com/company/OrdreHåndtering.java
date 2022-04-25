@@ -10,17 +10,17 @@ public class OrdreHåndtering {
     private int ordreNummer=1;
 
     public void visBestillingsListe(){
-        System.out.println("_________________________________");
+        System.out.println("______________________________________");
         for (Bestilling bestilling : bestillingsListe) {
             bestilling.visBestilling();
-            System.out.println("_________________________________");
+            System.out.println("______________________________________");
         }
     }
     public void visEkspederetListe(){
-        System.out.println("_________________________________");
+        System.out.println("______________________________________");
         for (Bestilling bestilling : ekspederetListe) {
             bestilling.visBestilling();
-            System.out.println("_________________________________");
+            System.out.println("______________________________________");
         }
     }
 
@@ -67,7 +67,7 @@ public class OrdreHåndtering {
     public int talFinder(String pizza){     //Virker kun ved 1 og 2-cifret antal
         if(!(pizza.charAt(0)==' ')&& (int)pizza.charAt(0)-(int)'a' < 0){
             if(!(pizza.charAt(1)==' ')&& (int)pizza.charAt(1)-(int)'a' < 0){
-                return (pizza.charAt(0)-'0')*(10+pizza.charAt(1)-'0');
+                return (pizza.charAt(0)-'0')*10+(pizza.charAt(1)-'0');
             }
             return pizza.charAt(0)-'0';
         }
