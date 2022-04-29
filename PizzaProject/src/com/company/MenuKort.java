@@ -1,27 +1,26 @@
 package com.company;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class MenuKort {
-    private ArrayList<Pizza> menu;
+    private ArrayList<Pizza> menu = new ArrayList<>();;
 
-    public MenuKort() {
-        menu = new ArrayList<>();
-        menu.add(new Pizza("Vesuvio",57));
-        menu.add(new Pizza("Amerikaner",53));
-        menu.add(new Pizza("Cacciatore",57));
-        menu.add(new Pizza("Carbona",63));
-        menu.add(new Pizza("Dennis",65));
-        menu.add(new Pizza("Bertil",57));
-        menu.add(new Pizza("Silvia",61));
-        menu.add(new Pizza("Victoria",61));
-        menu.add(new Pizza("Toronfo",61));
-        menu.add(new Pizza("Capricciosa",61));
-        menu.add(new Pizza("Hawaii",61));
-        menu.add(new Pizza("La Blissola",61));
-        menu.add(new Pizza("Venezia",61));
-        menu.add(new Pizza("Mafia",61));
+    public ArrayList<Pizza> getMenu() {
+        return menu;
     }
+
+    /*
+    public void pizzaSave() throws FileNotFoundException {
+        PrintStream out = new PrintStream(new File("menu.csv"));
+        for(Pizza pizza : menu){
+            pizza.pizzaLoad(out);
+        }
+    }
+
+     */
 
 
 

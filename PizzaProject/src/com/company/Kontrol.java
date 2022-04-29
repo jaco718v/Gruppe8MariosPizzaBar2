@@ -1,5 +1,8 @@
 package com.company;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Kontrol {
@@ -9,7 +12,27 @@ public class Kontrol {
     private final OrdreHåndtering oh = new OrdreHåndtering();
     private final MenuKort mk = new MenuKort();
 
-    public void kør(){
+    /*
+    public MenuKort getMk() {
+        return mk;
+    }
+
+     */
+
+    public void loadPizza() throws FileNotFoundException {
+        Scanner fileScanner = new Scanner(new File("menu.csv"));
+        while(fileScanner.hasNextLine()){
+            String line = fileScanner.nextLine();
+            Scanner lineScanner = new Scanner(line).useDelimiter(",").useLocale(Locale.ENGLISH); //Semicolon virker igen ikke?
+            String navn = lineScanner.next();
+            double pris = lineScanner.nextDouble();
+            mk.getMenu().add(new Pizza(navn,pris));
+        }
+    }
+
+
+    public void kør() throws FileNotFoundException {
+        loadPizza();
         while(kører) {
             visInformation();
             valg();
